@@ -1,7 +1,8 @@
 
 
 def main():
-    get_password()
+    password = get_password()
+    print_password(password)
 
 
 def get_password():
@@ -9,12 +10,10 @@ def get_password():
     while len(password) < 8:
         print("Invalid Password Length")
         password = input("New Password: ")
-    print_password(password)
-
+    return password
 
 def print_password(password: str):
     print("Password Set: " + "*" * len(password))
-
 
 main()
 
