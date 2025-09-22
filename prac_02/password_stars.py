@@ -1,6 +1,7 @@
-password = input("New Password: ")
+
 
 def main():
+    password = input("New Password: ")
     while len(password) < 8:
         print ("Invalid Password Length")
         password = input("New Password: ")
