@@ -1,4 +1,4 @@
-import random
+# Score Menu
 
 def main():
     valid = False
@@ -21,10 +21,12 @@ def main():
         elif menu_selection == "S":
             if valid == 0:
                 score, valid = get_valid_input()
-                score_stars(score)
+                number_of_stars = score_stars(score)
+                print(f"Wow! Your Score was this many stars: {number_of_stars}")
                 menu_selection = input("Select From Menu:")
             else:
-                score_stars(score)
+                number_of_stars = score_stars(score)
+                print(f"Wow! Your Score was this many stars: {number_of_stars}" )
                 menu_selection = input("Select From Menu:")
         else:
             print ("Invalid Input")
@@ -59,6 +61,7 @@ def print_result (score):
         return status
 
 def score_stars (score):
-    print("Wow! Your Score was this many stars:" +"*"* score)
+    number_of_stars = "*"*score
+    return number_of_stars
 
 main()

@@ -4,8 +4,6 @@ Program to determine score status
 """
 import random
 
-
-
 def main ():
     score = float(input("Enter score: "))
     status = score_status(score)
