@@ -1,61 +1,35 @@
 import random
-# Write a complete Python program following the standard structure that uses a main and other functions.
-# Use a main menu following the standard menu pattern.
-#
-# The menu should have four separate options:
-#
-# (G)et a valid score (must be 0-100 inclusive)
-# (P)rint result (copy or import your function to determine the result from score.py)
-# (S)how stars (this should print as many stars as the score)
-# (Q)uit
-# Handle each of these (except quit) separately, and consider how you can reuse your functions.
-#
-# In main(), before the menu loop, get a valid score using your function.
-# When the user quits, say some kind of "farewell".
 
 def main():
     valid = False
-    menu_selection = input("PICK")
+    print ("(G)et a valid score (must be 0-100 inclusive)\n" +"(P)rint result\n" + "(S)how stars (this should print as many stars as the score)\n" + "(Q)uit")
+    menu_selection = input("Select From Menu: ")
     while menu_selection != "Q":
         if menu_selection == "G":
             score,valid = get_valid_input()
-            menu_selection = input("PICK")
+            menu_selection = input("Select From Menu:")
         elif menu_selection == "P":
             if valid == 0:
                 score, valid = get_valid_input()
-                print_result(score)
-                menu_selection = input("PICK")
+                status = print_result(score)
+                print(status)
+                menu_selection = input("Select From Menu:")
             else:
-                print_result(score)
-                menu_selection = input("PICK")
+                status = print_result(score)
+                print(status)
+                menu_selection = input("Select From Menu:")
         elif menu_selection == "S":
             if valid == 0:
                 score, valid = get_valid_input()
                 score_stars(score)
-                menu_selection = input("PICK")
+                menu_selection = input("Select From Menu:")
             else:
                 score_stars(score)
-                menu_selection = input("PICK")
+                menu_selection = input("Select From Menu:")
         else:
             print ("Invalid Input")
-            menu_selection = input("PICK")
+            menu_selection = input("Select From Menu:")
     print("Farewell")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def get_valid_input ():
@@ -70,7 +44,6 @@ def get_valid_input ():
         valid = True
         return score, valid
 
-
 def print_result (score):
     if score < 0 or score > 100:
         status = "Invalid score"
@@ -82,9 +55,10 @@ def print_result (score):
         status = "Passable"
         return status
     else:
-        status ="Bad"
+        status = "Bad"
         return status
+
 def score_stars (score):
-    print("*"* score)
+    print("Wow! Your Score was this many stars:" +"*"* score)
 
 main()
