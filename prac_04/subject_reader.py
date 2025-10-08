@@ -5,11 +5,9 @@ Data file -> lists program
 
 FILENAME = "subject_data.txt"
 
-
 def main():
-    data = load_data(FILENAME)
-    print(data)
-
+    subject_data = load_data(FILENAME)
+    print_subject(subject_data)
 
 def load_data(filename=FILENAME):
     """Read data from file formatted like: subject,lecturer,number of students."""
@@ -26,10 +24,12 @@ def load_data(filename=FILENAME):
         load_subject_data.append(parts)
         print(load_subject_data)
         print("----------")
-        print_subject(parts)
     input_file.close()
+    return load_subject_data
 
-def print_subject(line:[any]):
-    print(f"{line[0]} is taught by {line[1]} and they have {line[2]} students ")
+def print_subject(subject_data: list[list]):
+    """Print each subject’s details clearly."""
+    for subject in subject_data:
+        print(f"{subject[0]} is taught by {subject[1]} and has {subject[2]} students")
 
 main()
