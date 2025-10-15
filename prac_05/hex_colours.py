@@ -17,7 +17,7 @@ COLOUR_NAME_HEX = {
 }
 
 colour_code = input("Enter A Colour Name For A Hex: ")
-while colour_code != " ":
+while colour_code != "":
     if colour_code in COLOUR_NAME_HEX:
         print(colour_code, "is", COLOUR_NAME_HEX[colour_code])
     else:

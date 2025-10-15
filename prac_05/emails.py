@@ -20,7 +20,7 @@ def main():
 
 
 def get_name_from_email(email):
-    if email != "":
+    while email != "":
      """Split the name from the email and check if it's correct """
      email_parts = email.split("@")
      check = input(f"Is {email_parts[0]}  your name? (T/F)")
