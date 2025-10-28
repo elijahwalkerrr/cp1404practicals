@@ -14,11 +14,13 @@ class ProgrammingLanguage:
         self.year = year
 
     def is_dynamic(self):
+        """Returns true if the language is dynamic."""
         if self.typing.lower() == "dynamic":
             return True
         else:
             return False
     def __str__(self):
+        """ Prints language name, tying, reflection and year of origin. """
         return f"{self.name}, {self.typing}, Reflection = {self.reflection}, First Appeared in {self.year}"
 
 
