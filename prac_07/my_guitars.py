@@ -5,6 +5,8 @@ from prac_07.guitar import Guitar
 def main():
     guitars = load_guitars("guitars.csv")
     sort_guitars(guitars)
+    add_guitar(guitars)
+    sort_guitars(guitars)
 
 
 
@@ -21,6 +23,18 @@ def sort_guitars(guitars):
     guitars.sort()
     for guitar in guitars:
         print(guitar)
+
+def add_guitar(guitars):
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: "))
+        guitars.append(Guitar(name, year, cost))
+        print(f"Saved {name} ({year}) to Guitar's List")
+        name = input("Name: ")
+
+
+
 
 
 
