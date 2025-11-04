@@ -1,8 +1,9 @@
 # Practicals Repository for Programming II 
 ## A preview into clean code lessons learnt 
 
-Name: Elijah Walker 
-Currently Enrolled In: Engineering (Electrical) 
+Name: Elijah Walker,
+Currently Enrolled In: Engineering (Electrical), 
+
 The repository was created to display the python practices learnt throughout the subject, w
 ith new skills being displayed each week. 
 
