@@ -3,14 +3,16 @@ from prac_07.guitar import Guitar
 
 
 def main():
+    """ Loads, sorts, prints and then adds guitars to list before """
     guitars = load_guitars("guitars.csv")
-    sort_guitars(guitars)
+    guitars.sort()
+    for guitar in guitars:
+        print(guitar)
     add_guitar(guitars)
-    sort_guitars(guitars)
-
-
+    save_file(guitars, "guitars.csv")
 
 def load_guitars(filename):
+    """ Loads guitars file and returns guitars list"""
     with open("guitars.csv", "r") as file:
         guitars = []
         for line in file:
@@ -19,12 +21,8 @@ def load_guitars(filename):
             guitars.append(my_guitars)
     return guitars
 
-def sort_guitars(guitars):
-    guitars.sort()
-    for guitar in guitars:
-        print(guitar)
-
 def add_guitar(guitars):
+    """ Adds a guitar into the list using the class"""
     name = input("Name: ")
     while name != "":
         year = int(input("Year: "))
@@ -33,10 +31,11 @@ def add_guitar(guitars):
         print(f"Saved {name} ({year}) to Guitar's List")
         name = input("Name: ")
 
-
-
-
-
+def save_file(guitars, filename):
+    """ Opens and writes the new guitars list to file"""
+    with open(filename, "w",) as file:
+        for guitar in guitars:
+            print(f"{guitar.name},{guitar.year},{guitar.cost}", file=file)
 
 
 main()
