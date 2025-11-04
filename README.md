@@ -4,8 +4,7 @@
 Name: Elijah Walker,
 Currently Enrolled In: Engineering (Electrical), 
 
-The repository was created to display the python practices learnt throughout the subject, w
-ith new skills being displayed each week. 
+The repository was created to display the python practices learnt throughout the subject, with new skills being displayed each week. 
 
 ### Lessons Learnt On Clean Code
 1. Writing clean and meaningful variable/function names to make code self-explanatory.
