@@ -1,30 +1,35 @@
 """ Time Estimation: 40mins """
+from random import choices
+
 from prac_07.project import Project
 
 FILENAME = "projects.txt"
 
 def main():
-    option = print_menu().lower()
+
+    choice = print_menu().lower()
     projects = []
-    while option != "q":
-        if option == "l":
-            projects = file_load(FILENAME)
-            option = print_menu().lower()
-            if not projects:
-                projects = file_load(FILENAME)
-            elif option == "s":
-                save_file(FILENAME)
-                option = print_menu().lower()
-            elif option == "f":
-                projects.sort
-                display_projects(projects)
-                option = print_menu().lower()
-            elif option == "a":
-                projects.append(add_new_project())
-                option = print_menu().lower()
-            elif option == "d":
-                display_projects(projects)
-                option = print_menu().lower()
+    while choice != "q":
+        if choice == "l":
+            filename = input("Please Enter Filename To Load: ")
+            projects = file_load(filename)
+        elif choice == "s":
+            filename = input("Please Enter Filename To Save: ")
+            save_file(filename, projects)
+        elif choice == "f":
+            projects.sort
+            display_projects(projects)
+        elif choice == "a":
+            projects.append(add_new_project())
+
+        elif choice == "d":
+            display_projects(projects)
+
+        #elif choice == "u":
+
+        else:
+            choice = input("Invalid Input: Try Again")
+        choice = print_menu().lower()
 
 def print_menu():
     print("(L)oad Projects: "
@@ -66,6 +71,7 @@ def add_new_project():
     cost_est = float(input("Cost Estimate: "))
     completion = float(input("Completion (%): "))
     return Project(name, start_date, priority,cost_est, completion)
+
 
 
 
