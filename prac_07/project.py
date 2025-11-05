@@ -13,3 +13,6 @@ class Project:
         """ Returns The name, start date, priority, cost estimate and completion status"""
         return (f"{self.name} starts {self.start_date} at priority {self.priority}, the cost estimate "
                 f"is {self.cost_est} and is {self.completion}% completed")
+    def __lt__(self,other):
+        """Determines if project is older or younger than another"""
+        return self < other
