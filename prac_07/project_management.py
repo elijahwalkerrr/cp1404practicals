@@ -6,6 +6,15 @@ def main():
     projects =file_load("projects.txt")
     display_projects(projects)
 
+def print_menu():
+    print("(L)oad Projects: "
+          "(S)ave Projects: "
+          "(D)isplay Projects: "
+          "(F)ilter Projects by Date: "
+          "(A)dd New Project: "
+          "(U)pdate Project: ")
+    option = input("Select From Menu: ")
+    return option
 
 def file_load(filename):
     projects = []
