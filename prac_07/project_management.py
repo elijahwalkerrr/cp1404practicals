@@ -20,13 +20,13 @@ def main():
             filename = input("Please Enter Filename To Save: ")
             save_file(filename, projects)
         elif choice == "f":
-            projects.sort
+            filter_projects(projects)
             display_projects_list(projects)
         elif choice == "a":
             projects.append(add_new_project())
         elif choice == "d":
             display_projects_status(projects, "completed")
-            display_projects_status("incomplete")
+            display_projects_status(projects, "incomplete")
         elif choice == "u":
             display_projects_list(projects)
             projects = update_project(projects)
@@ -65,35 +65,29 @@ def filter_projects(projects):
     filter_date = datetime.strptime(date_string, "%d/%m/%Y").date()
     filtered = []
 
-    for p in projects:
-        if isinstance(p.start_date, str):
-            p_date = datetime.strptime(p.start_date, "%d/%m/%Y").date()
+    for project in projects:
+        if isinstance(project.start_date, str):
+            project_date = datetime.strptime(project.start_date, "%d/%m/%Y").date()
         else:
-            p_date = p.start_date
-        if p_date >= filter_date:
-            filtered.append(p)
+            project_date = project.start_date
+        if project_date >= filter_date:
+            filtered.append(project)
     filtered.sort()
     print("\nFiltered projects:")
-    for i, p in enumerate(filtered, start=1):
-        print(f"{i}. {p.name}, start: {p.start_date}, priority {p.priority}, "
-              f"estimate: ${p.cost_est:.2f}, completion: {p.completion}%")
-
-
+    for i, project in enumerate(filtered, start=1):
+        print(f"{i}. {project.name}, start: {project.start_date}, priority {project.priority}, "
+              f"estimate: ${project.cost_est:.2f}, completion: {project.completion}%")
 
 
 def display_projects_status(projects, status):
-    if {status} == "Completed":
-        print(f"Projects Completed: ")
-        for i, project in enumerate(projects):
-            if project.completed():
-                print(f"{i + 1}. {project.name}, start: {project.start_date} priority {project.priority}"
-              f", estimate: ${project.cost_est}, completion: {project.completion}%")
-    else:
-        print("Projects Incomplete:")
-        for i, project in enumerate(projects):
-            if not project.completed():
-                print(f"{i + 1}. {project.name}, start: {project.start_date} priority {project.priority}"
-                  f", estimate: ${project.cost_est}, completion: {project.completion}%")
+    """ Display the projects that are either completed or uncompleted """
+    print(f"Projects {status}: ")
+    for i, project in enumerate(projects):
+        if int(project.completion) >= 100 and status == "completed" or (status == "incomplete" and
+                                                                            int(project.completion) < 100):
+            print(f"{i + 1}. {project.name}, start: {project.start_date} priority {project.priority}"
+             f", estimate: ${project.cost_est}, completion: {project.completion}%")
+
 
 def save_file(filename, projects):
     """Saves file with headings included"""
@@ -104,6 +98,7 @@ def save_file(filename, projects):
                   f"{project.completion}\t")
 
 def add_new_project():
+    """"""
     name = input("Name: ")
     start_date = input("Start Date: ")
     priority = int(input("Priority: "))
