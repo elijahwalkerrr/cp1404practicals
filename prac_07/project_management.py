@@ -1,18 +1,18 @@
 """ Time Estimation: 40mins """
-from random import choices
 
 from prac_07.project import Project
 
-FILENAME = "projects.txt"
+DEFAULT_FILE = "projects.txt"
 
 def main():
-
+    projects = file_load(DEFAULT_FILE)
+    print("")
     choice = print_menu().lower()
-    projects = []
     while choice != "q":
         if choice == "l":
             filename = input("Please Enter Filename To Load: ")
             projects = file_load(filename)
+            display_projects(projects)
         elif choice == "s":
             filename = input("Please Enter Filename To Save: ")
             save_file(filename, projects)
@@ -25,22 +25,22 @@ def main():
         elif choice == "d":
             display_projects(projects)
 
-        #elif choice == "u":
-
+        elif choice == "u":
+            display_projects(projects)
         else:
-            choice = input("Invalid Input: Try Again")
+            print("Invalid Input: Try Again")
         choice = print_menu().lower()
 
 def print_menu():
-    print("(L)oad Projects: "
-          "(S)ave Projects: "
-          "(D)isplay Projects: "
-          "(F)ilter Projects by Date: "
-          "(A)dd New Project: "
-          "(U)pdate Project: "
-          "(Q)uit: ")
-    option = input("Select From Menu: ")
-    return option
+    print("\n(L)oad Projects\n"
+          "(S)ave Projects\n"
+          "(D)isplay Projects\n"
+          "(F)ilter Projects by Date\n"
+          "(A)dd New Project\n"
+          "(U)pdate Project\n"
+          "(Q)uit\n")
+    choice = input("Select From Menu: ")
+    return choice
 
 def file_load(filename):
     projects = []
@@ -48,13 +48,13 @@ def file_load(filename):
         next(file)
         for line in file:
             parts = line.strip().split('\t')
-            pject = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
-            projects.append(pject)
+            project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
+            projects.append(project)
     return projects
 
 def display_projects(projects):
-    for project in projects:
-        print(project)
+    for i, project in enumerate(projects):
+        print(f"{i+1}. {project.name}")
 
 def save_file(filename, projects):
     """Saves file with headings included"""
@@ -72,9 +72,17 @@ def add_new_project():
     completion = float(input("Completion (%): "))
     return Project(name, start_date, priority,cost_est, completion)
 
-
-
-
+def update_project(projects):
+    project_selection = int(input("Select Number of Book to Alter"))
+    choice = input("Update (C)ompletion or (P)riority: ").lower()
+    if choice == "c":
+        percentage = float(input("Change Percentage To: "))
+        if not percentage == "":
+            projects[project_selection][4] == percentage
+    elif choice == "P":
+        priority = int(input("Change Percentage To: "))
+        if not priority == "":
+            projects[project_selection][3] == priority
 
 
 
