@@ -16,7 +16,8 @@ class Project:
 
     def __lt__(self,other):
         """ Determines if project is older or younger than another """
-        return self < other
+        return self.start_date < other.start_date
+
 
     def update(self):
         """ Changes update status to new float and priority to new int"""
