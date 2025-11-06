@@ -6,7 +6,8 @@ from prac_07.project import Project
 DEFAULT_FILE = "projects.txt"
 
 def main():
-    """Loads the default file"""
+    """Loads the default file, displays the menu, and processes user choices.
+    Allows the user to load, save, display, add filter and update projects."""
     projects = file_load(DEFAULT_FILE)
     print(f"Default file: {DEFAULT_FILE}\n"
           f"Currently loaded: {len(projects)} Projects ")
@@ -35,6 +36,7 @@ def main():
         choice = print_menu().lower()
 
 def print_menu():
+    """ Prints a Menu detailing options of input."""
     print("\n- (L)oad Projects\n"
           "- (S)ave Projects\n"
           "- (D)isplay Projects\n"
@@ -46,6 +48,7 @@ def print_menu():
     return choice
 
 def file_load(filename):
+    """Loads a user inputted program and returns the projects listed."""
     projects = []
     with open(filename, "r") as file:
         next(file)
@@ -56,11 +59,13 @@ def file_load(filename):
     return projects
 
 def display_projects_list(projects):
+    """Iterates and prints the objects in the projects list"""
     for i, project in enumerate(projects):
         print(f"{i+1}. {project.name}, start: {project.start_date} priority {project.priority}"
               f", estimate: ${project.cost_est}, completion: {project.completion}%")
 
 def filter_projects(projects):
+    """ Filters the projects if they are dated before user specified input"""
     date_string = input("Show projects that start after date (dd/mm/yyyy): ")
     filter_date = datetime.strptime(date_string, "%d/%m/%Y").date()
     filtered = []
@@ -98,7 +103,7 @@ def save_file(filename, projects):
                   f"{project.completion}\t")
 
 def add_new_project():
-    """"""
+    """User Input adds returns a new Project object"""
     name = input("Name: ")
     start_date = input("Start Date: ")
     priority = int(input("Priority: "))
@@ -107,6 +112,7 @@ def add_new_project():
     return Project(name, start_date, priority,cost_est, completion)
 
 def update_project(projects):
+    """ Updates a project using class method"""
     project_selection = int(input("Select Number of Book to Alter"))
     project_choice = projects[project_selection]
     project_choice.update()
