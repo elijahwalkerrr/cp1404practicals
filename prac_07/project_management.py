@@ -95,9 +95,9 @@ def display_projects_status(projects, status):
 def save_file(filename, projects):
     """Saves file with headings included"""
     with open(filename, "w") as file:
-        print("Name	Start Date	Priority	Cost Estimate	Completion Percentage")
+        file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage")
         for project in projects:
-            print(f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_est}\t"
+            file.write(f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_est}\t"
                   f"{project.completion}\t")
 
 def add_new_project():
