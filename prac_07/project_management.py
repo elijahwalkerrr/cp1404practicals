@@ -1,4 +1,5 @@
 """ Time Estimation: 40mins """
+import datetime
 
 from prac_07.project import Project
 
@@ -58,6 +59,28 @@ def display_projects_list(projects):
     for i, project in enumerate(projects):
         print(f"{i+1}. {project.name}, start: {project.start_date} priority {project.priority}"
               f", estimate: ${project.cost_est}, completion: {project.completion}%")
+
+def filter_projects(projects):
+    date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+    filter_date = datetime.strptime(date_string, "%d/%m/%Y").date()
+    filtered = []
+
+    for p in projects:
+        if isinstance(p.start_date, str):
+            p_date = datetime.strptime(p.start_date, "%d/%m/%Y").date()
+        else:
+            p_date = p.start_date
+        if p_date >= filter_date:
+            filtered.append(p)
+    filtered.sort()
+    print("\nFiltered projects:")
+    for i, p in enumerate(filtered, start=1):
+        print(f"{i}. {p.name}, start: {p.start_date}, priority {p.priority}, "
+              f"estimate: ${p.cost_est:.2f}, completion: {p.completion}%")
+
+
+
+
 def display_projects_status(projects, status):
     if {status} == "Completed":
         print(f"Projects Completed: ")
