@@ -1,5 +1,5 @@
 """ Time Estimation: 40mins """
-import datetime
+from datetime import datetime
 
 from prac_07.project import Project
 
@@ -22,7 +22,6 @@ def main():
             save_file(filename, projects)
         elif choice == "f":
             filter_projects(projects)
-            display_projects_list(projects)
         elif choice == "a":
             projects.append(add_new_project())
         elif choice == "d":
@@ -69,21 +68,20 @@ def filter_projects(projects):
     date_string = input("Show projects that start after date (dd/mm/yyyy): ")
     filter_date = datetime.strptime(date_string, "%d/%m/%Y").date()
     filtered = []
-
     for project in projects:
         if isinstance(project.start_date, str):
             project_date = datetime.strptime(project.start_date, "%d/%m/%Y").date()
         else:
             project_date = project.start_date
-        if project_date >= filter_date:
+
+        if project_date > filter_date:
             filtered.append(project)
+
     filtered.sort()
     print("\nFiltered projects:")
     for i, project in enumerate(filtered, start=1):
         print(f"{i}. {project.name}, start: {project.start_date}, priority {project.priority}, "
-              f"estimate: ${project.cost_est:.2f}, completion: {project.completion}%")
-
-
+              f"estimate: ${project.cost_est}, completion: {project.completion}%")
 def display_projects_status(projects, status):
     """ Display the projects that are either completed or uncompleted """
     print(f"Projects {status}: ")
