@@ -27,6 +27,7 @@ def main():
 
         elif choice == "u":
             display_projects(projects)
+            projects = update_project(projects)
         else:
             print("Invalid Input: Try Again")
         choice = print_menu().lower()
@@ -54,7 +55,8 @@ def file_load(filename):
 
 def display_projects(projects):
     for i, project in enumerate(projects):
-        print(f"{i+1}. {project.name}")
+        print(f"{i+1}. {project.name}, start: {project.start_date} priority {project.priority}"
+              f", estimate: ${project.cost_est}, completion: {project.completion}")
 
 def save_file(filename, projects):
     """Saves file with headings included"""
@@ -74,15 +76,9 @@ def add_new_project():
 
 def update_project(projects):
     project_selection = int(input("Select Number of Book to Alter"))
-    choice = input("Update (C)ompletion or (P)riority: ").lower()
-    if choice == "c":
-        percentage = float(input("Change Percentage To: "))
-        if not percentage == "":
-            projects[project_selection][4] == percentage
-    elif choice == "P":
-        priority = int(input("Change Percentage To: "))
-        if not priority == "":
-            projects[project_selection][3] == priority
+    project_choice = projects[project_selection]
+    project_choice.update()
+    return projects
 
 
 
