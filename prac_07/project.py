@@ -18,8 +18,15 @@ class Project:
         """ Determines if project is older or younger than another """
         return self < other
 
-    def update(self, new_completion):
-        """ Changes update status to new float"""
-        self.completion = new_completion
-        return self.completion
+    def update(self):
+        """ Changes update status to new float and priority to new int"""
+        print(f"Updating project: {self.name}")
+        new_completion = input("New Percentage: ")
+        new_priority = input("New Priority: ")
+
+        if new_completion.strip():
+            self.completion = float(new_completion)
+        if new_priority.strip():
+            self.priority = int(new_priority)
+
 
