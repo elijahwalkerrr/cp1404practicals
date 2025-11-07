@@ -25,9 +25,9 @@ class Project:
         new_completion = input("New Percentage: ")
         new_priority = input("New Priority: ")
 
-        if new_completion.strip():
+        if new_completion != "":
             self.completion = float(new_completion)
-        if new_priority.strip():
+        if new_priority != "":
             self.priority = int(new_priority)
 
 
