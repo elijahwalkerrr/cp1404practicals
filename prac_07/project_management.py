@@ -1,6 +1,5 @@
 """ Time Estimation: 40mins """
 from datetime import datetime
-
 from prac_07.project import Project
 
 DEFAULT_FILE = "projects.txt"
@@ -33,6 +32,12 @@ def main():
         else:
             print("Invalid Input: Try Again")
         choice = print_menu().lower()
+    save_choice = input("Would you like to save to projects.txt?")
+    if save_choice =="Yes":
+        save_file(DEFAULT_FILE, projects)
+        print("Thank you for using custom-built project management software.")
+    else:
+        print("Thank you for using custom-built project management software.")
 
 def print_menu():
     """ Prints a Menu detailing options of input."""
@@ -61,7 +66,7 @@ def display_projects_list(projects):
     """Iterates and prints the objects in the projects list"""
     for i, project in enumerate(projects):
         print(f"{i+1}. {project.name}, start: {project.start_date} priority {project.priority}"
-              f", estimate: ${project.cost_est}, completion: {project.completion}%")
+              f", estimated cost: ${project.cost_est}, completion: {project.completion}%")
 
 def filter_projects(projects):
     """ Filters the projects if they are dated before user specified input"""
@@ -82,6 +87,7 @@ def filter_projects(projects):
     for i, project in enumerate(filtered, start=1):
         print(f"{i}. {project.name}, start: {project.start_date}, priority {project.priority}, "
               f"estimate: ${project.cost_est}, completion: {project.completion}%")
+
 def display_projects_status(projects, status):
     """ Display the projects that are either completed or uncompleted """
     print(f"Projects {status}: ")
