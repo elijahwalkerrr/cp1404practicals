@@ -15,5 +15,16 @@ BoxLayout:
             text: 'Up'
             Button:
             text: 'Down'
+    BoxLayout:
+        Button:
+            text: 'Convert Miles to Kilometres'
+            on_press: app.hand_conversions(input_number.text)
+        Label:
+        id: output_label
+            font_size: 48
+
+
+
+
 
 
