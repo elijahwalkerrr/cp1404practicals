@@ -11,6 +11,12 @@ class BoxLayoutDemo(App):
     def handle_greet(self):
         self.root.ids.output_label.text = f"Hello {self.root.ids.input_name.text}"
 
+    def clear_fields(self):
+        self.root.ids.output_label.text = "Enter your name"
+        self.root.ids.input_name.text = ""
+
+
+
 
 
 
