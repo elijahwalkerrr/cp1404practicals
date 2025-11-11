@@ -7,11 +7,13 @@ Started 11/11/2025
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
+from kivy.properties import StringProperty
 
 MILES_IN_KM = 1.609344
 
 class ConvertMilesToKilometres(App):
     """ ConvertMilesToKilometres is a Kivy App for changing miles to kilometres """
+
     def build(self):
         """ build the Kivy app from the kv file """
         Window.size = (800, 400)
@@ -26,7 +28,6 @@ class ConvertMilesToKilometres(App):
             self.root.ids.output_label.text = str(kilometre)
         except ValueError:
             pass
-        
 
     def handle_increment(self, increment):
         try:
@@ -35,6 +36,5 @@ class ConvertMilesToKilometres(App):
             self.root.ids.input_number.text = str(mile)
         except ValueError:
             self.root.ids.input_number.text = "0"
-
 
 ConvertMilesToKilometres().run()
