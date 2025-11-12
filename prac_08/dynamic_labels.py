@@ -8,12 +8,10 @@ Elijah Walker
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.label import Label
-from kivy.properties import StringProperty
+
 
 class DynamicLabelsApp(App):
-    """"""
-    status_text = StringProperty()
-
+    """ Dynamic Labels is a Kivy app that dynamically displays a list of names"""
     def __init__(self, **kwargs):
         """ Construct main app."""
         super().__init__(**kwargs)
@@ -32,6 +30,7 @@ class DynamicLabelsApp(App):
             temp_label = Label(text=name)
             self.root.ids.main_box.add_widget(temp_label)
 
+DynamicLabelsApp().run()
 
 
 
