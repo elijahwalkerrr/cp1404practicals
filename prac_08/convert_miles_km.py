@@ -2,12 +2,11 @@
 CP1404 Practical
 Kivy GUI program to convert miles to kilometres
 Elijah Walker
-Started 11/11/2025
+11/11/2025
 """
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
-from kivy.properties import StringProperty
 
 MILES_IN_KM = 1.609344
 
