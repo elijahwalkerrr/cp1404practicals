@@ -8,6 +8,7 @@ from prac_09.taxi import Taxi
 def main():
     current_taxi = None
     bill = 0.0
+
     taxis = [Taxi("Prius", 100),
              SilverServiceTaxi("Limo", 100, 2),
              SilverServiceTaxi("Hummer", 200, 4)]
@@ -17,7 +18,7 @@ def main():
     while choice != "q":
         if choice == "c":
             for i,taxi in enumerate(taxis):
-                print(f"{i}. {taxi}")
+                print(f"{i} - {taxi}")
             try:
                 index = int(input("Choose taxi: "))
                 current_taxi = taxis[index]
@@ -28,10 +29,11 @@ def main():
                 print("You need to choose a taxi before you can drive")
             else:
                 distance = int(input("How far (km)? "))
+                current_taxi.start_fare()
                 current_taxi.drive(distance)
-                current_taxi.get_fare()
                 fare = current_taxi.get_fare()
                 bill += fare
+                print(f"Your current trip cost you {fare}")
         else:
             print("Invalid Choice")
         print(f"Bill To Date: ${bill}")
@@ -39,7 +41,7 @@ def main():
 
 
     for i, taxi in enumerate(taxis):
-        print(f"{i}. {taxi}")
+        print(f"{i} - {taxi}")
     print(f"Total Trip Cost: ${bill}")
 
 main()
