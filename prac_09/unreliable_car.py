@@ -9,7 +9,7 @@ class UnreliableCar(Car):
     """Specialised version of a car that includes reliability attribute"""
     def __init__(self, name="", fuel=0, reliability = 0.0):
         """Initialise an unreliable Car instance, based on parent class Car."""
-        super.__init__(name, fuel)
+        super().__init__(name, fuel)
         self.reliability = reliability
 
     def drive(self, distance):
