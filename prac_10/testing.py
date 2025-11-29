@@ -27,7 +27,6 @@ def is_long_word(word, length=5):
 def make_sentence(phrase):
     """
         Format phrase as a sentence.
-
         >>> make_sentence("hello")
         'Hello.'
         >>> make_sentence("It is an ex parrot.")
@@ -35,6 +34,9 @@ def make_sentence(phrase):
         >>> make_sentence("good MORNING")
         'Good morning.'
         """
+    phrase = phrase.rstrip(".")
+    phrase = phrase.capitalize()
+    return phrase + "."
 
 
 
