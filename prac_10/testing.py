@@ -29,11 +29,8 @@ def run_tests():
     """Run the tests on the functions."""
     # assert test with no message - used to see if the function works properly
     assert repeat_string("Python", 1) == "Python"
-    # the test below should fail
+    # the test below should fail (now works)
     assert repeat_string("hi", 2) == "hi hi"
-
-    # TODO: 1. fix the repeat_string function above so that it passes the failing test
-    # Hint: "-".join(["yo", "yo"] -> "yo-yo"
 
     # assert test with custom message,
     # used to see if Car's init method sets the odometer correctly
@@ -41,11 +38,14 @@ def run_tests():
     car = Car()
     assert car._odometer == 0, "Car does not set odometer correctly"
 
-    # TODO: 2. write assert statements to show if Car sets the fuel correctly
     # Note that Car's __init__ function sets the fuel in one of two ways:
     # using the value passed in or the default
     # You should test both of these
-    car = Car(fuel=10)
+    assert car.fuel == 0, "Default fuel does not set correctly"
+
+    car_with_fuel = Car(fuel=10)
+    assert car_with_fuel.fuel == 10, "Pass in fuel not set correctly"
+
 
 
 run_tests()
