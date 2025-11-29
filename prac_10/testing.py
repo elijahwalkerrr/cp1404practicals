@@ -24,6 +24,20 @@ def is_long_word(word, length=5):
     """
     return len(word) >= length
 
+def make_sentence(phrase):
+    """
+        Format phrase as a sentence.
+
+        >>> make_sentence("hello")
+        'Hello.'
+        >>> make_sentence("It is an ex parrot.")
+        'It is an ex parrot.'
+        >>> make_sentence("good MORNING")
+        'Good morning.'
+        """
+
+
+
 
 def run_tests():
     """Run the tests on the functions."""
@@ -46,16 +60,10 @@ def run_tests():
     car_with_fuel = Car(fuel=10)
     assert car_with_fuel.fuel == 10, "Pass in fuel not set correctly"
 
-
-
 run_tests()
 
-# TODO: 3. Uncomment the following line and run the doctests
-# (PyCharm may see your >>> doctest comments and run doctests anyway.)
-# doctest.testmod()
-
-# TODO: 4. Fix the failing is_long_word function
-# (Don't change the tests, change the function!)
+# Enable the docsets
+doctest.testmod()
 
 # TODO: 5. Write and test a function to format a phrase as a sentence,
 # starting with a capital and ending with a single full stop.
