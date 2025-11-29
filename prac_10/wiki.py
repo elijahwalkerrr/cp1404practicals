@@ -15,6 +15,12 @@ def main():
             print("We need a more specific title. Try one of the following, or a new search:")
             print(error.options)
 
+        except wikipedia.exceptions.PageError:
+            print(f'Page ID "{title}" does not match any pages. Try another ID. ')
+
+main()
+
+
 
 
 
