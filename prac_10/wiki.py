@@ -11,6 +11,10 @@ def main():
             print(page.title)
             print(page.summary)
             print(page.url)
+        except wikipedia.exceptions.DisambiguationError as error:
+            print("We need a more specific title. Try one of the following, or a new search:")
+            print(error.options)
+
 
 
 
