@@ -6,4 +6,12 @@ def main():
         if title == "":
             print("Thank you.")
             break
+        try:
+            page = wikipedia.page(title, auto_suggest= False)
+            print(page.title)
+            print(page.summary)
+            print(page.url)
+
+
+
 
